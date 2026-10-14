@@ -1,6 +1,7 @@
 import csv
 import gzip
 import ipaddress
+from bisect import bisect_left
 from collections.abc import Iterable
 from dataclasses import dataclass
 from functools import lru_cache
@@ -46,6 +47,39 @@ def collapse_networks(networks: Iterable[Network]) -> list[Network]:
     if any(net.prefixlen == 0 for net in collapsed):
         raise ValueError("Aggregation produced a default route")
     return collapsed
+
+
+def subtract_networks(networks: Iterable[Network], excluded: Iterable[Network]) -> list[Network]:
+    """Subtract exact address space, preserving the rest of any containing subnet."""
+    original = collapse_networks(networks)
+    blocked = collapse_networks(excluded)
+    result: list[Network] = []
+    for version in (4, 6):
+        exclusions = [net for net in blocked if net.version == version]
+        ends = [int(net.broadcast_address) for net in exclusions]
+        address = ipaddress.IPv4Address if version == 4 else ipaddress.IPv6Address
+        for network in original:
+            if network.version != version:
+                continue
+            start = int(network.network_address)
+            end = int(network.broadcast_address)
+            index = bisect_left(ends, start)
+            while index < len(exclusions):
+                exclusion = exclusions[index]
+                left = int(exclusion.network_address)
+                if left > end:
+                    break
+                if start < left:
+                    result.extend(
+                        ipaddress.summarize_address_range(address(start), address(left - 1))
+                    )
+                start = max(start, int(exclusion.broadcast_address) + 1)
+                if start > end:
+                    break
+                index += 1
+            if start <= end:
+                result.extend(ipaddress.summarize_address_range(address(start), address(end)))
+    return result
 
 
 def parse_cidrs(text: str) -> list[Network]:
