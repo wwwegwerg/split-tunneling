@@ -1,4 +1,4 @@
-"""Publish a complete build as a new release; existing downloads stay available."""
+"""Publish a complete build as a new release."""
 
 import subprocess
 import sys

@@ -1,6 +1,7 @@
 # Split tunneling
 
 Списки доменов российских сервисов, IP России и Беларуси и сетей Telegram.
+Обновляются автоматически ежедневно.
 
 Идея — [Davoyan/mihomo-rule-sets](https://github.com/Davoyan/mihomo-rule-sets).
 
@@ -8,7 +9,7 @@
 | --- | --- |
 | ru-domains | Домены российских сервисов |
 | ru-ips | Подсети RU/BY и выбранных организаций |
-| telegram-domains | Дополнительные домены Telegram и сторонних клиентов |
+| telegram-domains | Домены Telegram и дополнения Davoyan |
 | telegram-ips | Подсети Telegram и сети AS1273/AS44893 |
 
 ## Приложения
@@ -20,6 +21,7 @@ https://github.com/wwwegwerg/split-tunneling/releases/latest/download/ИМЯ-Ф�
 ```
 
 В Mihomo и Shadowrocket правила Telegram используют VPN-политику и располагаются раньше RU.
+Адреса Telegram исключены из RU, чтобы не попадать под прямое подключение.
 AS1273/AS44893 захватывают также адреса сторонних сервисов.
 
 ### Mihomo
@@ -41,11 +43,17 @@ rules:
 
 ### Shadowrocket
 
-Списки `.shadowrocket.list` подключаются через `RULE-SET` в секции `[Rule]`:
-
 ```ini
+[Rule]
+RULE-SET,https://github.com/wwwegwerg/split-tunneling/releases/latest/download/telegram-domains.shadowrocket.list,PROXY
+RULE-SET,https://github.com/wwwegwerg/split-tunneling/releases/latest/download/telegram-ips.shadowrocket.list,PROXY
 RULE-SET,https://github.com/wwwegwerg/split-tunneling/releases/latest/download/ru-domains.shadowrocket.list,DIRECT
+RULE-SET,https://github.com/wwwegwerg/split-tunneling/releases/latest/download/ru-ips.shadowrocket.list,DIRECT
+FINAL,PROXY
 ```
+
+Автообновление списков в Shadowrocket настраивается отдельно.
+На iOS требуется **Background App Refresh**.
 
 ### AmneziaVPN
 

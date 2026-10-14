@@ -49,12 +49,12 @@ jobs:
 
   cleanup:
     needs: build
-    if: always() && github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v6
-      - name: Remove expired releases
+      - name: Remove previous releases
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 scripts/prune_releases.py

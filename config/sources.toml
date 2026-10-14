@@ -1,4 +1,4 @@
-# Sources and IP selectors from Davoyan/mihomo-rule-sets (2026-10-13).
+# Base sources and IP selectors from Davoyan/mihomo-rule-sets (2026-10-13).
 [local]
 ru_domains = "ru-domains.txt"
 telegram_ips = "telegram-ips.txt"
@@ -612,6 +612,12 @@ name = "davoyan-legacy"
 group = "ru-domains"
 format = "geosite"
 url = "https://raw.githubusercontent.com/Davoyan/mihomo-rule-sets/main/domains/category-ru-legacy.txt"
+
+[[sources]]
+name = "metacubex-telegram"
+group = "telegram-domains"
+format = "yaml"
+url = "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/telegram.yaml"
 
 [[sources]]
 name = "davoyan-telegram-domains"

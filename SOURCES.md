@@ -1,6 +1,6 @@
 # Источники
 
-Состав источников и фильтры перенесены из
+Основа источников и фильтров —
 [Davoyan/mihomo-rule-sets](https://github.com/Davoyan/mihomo-rule-sets).
 URL и критерии отбора находятся в
 [config/sources.toml](https://github.com/wwwegwerg/split-tunneling/blob/main/config/sources.toml).
@@ -25,7 +25,9 @@ MIT-notice hydraponique и v2fly сохранён в `third-party-notices.txt`.
 В используемых репозиториях itdoginfo и Davoyan, ветке данных MetaCubeX и файлах геофидов
 отдельная лицензия данных не объявлена.
 
-Telegram включает официальный CIDR-список и дополнения Davoyan.
+Домены Telegram объединяют набор MetaCubeX (включая `t.me` и `telegram.org`)
+и дополнения Davoyan, содержащие также домены сторонних клиентов.
+IP Telegram включают официальный CIDR-список, дополнения Davoyan и сети AS1273/AS44893.
 AS1273/AS44893 содержат также инфраструктуру, не принадлежащую Telegram.
 
 Исправление сохранения CIDR вошло в 5.0.1.5 ([#2973](https://github.com/amnezia-vpn/amnezia-client/pull/2973)).

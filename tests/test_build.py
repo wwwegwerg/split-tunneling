@@ -45,4 +45,13 @@ class PipelineTests(unittest.TestCase):
                 (output / "telegram-ips.shadowrocket.list").read_text().splitlines(),
                 ["IP-CIDR,192.0.2.0/24", "IP-CIDR6,2001:db8::/126"],
             )
+            self.assertEqual(
+                (output / "telegram-domains.txt").read_text().splitlines(),
+                [
+                    "domain:t.me",
+                    "domain:telegram.example",
+                    "domain:telegram.org",
+                    "keyword:nicegram",
+                ],
+            )
             self.assertIn("203.0.113.0/24", (output / "ru-ips.txt").read_text().splitlines())

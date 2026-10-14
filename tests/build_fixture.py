@@ -23,7 +23,12 @@ def build_fixture(output: Path) -> dict[str, int]:
             "full:api.example.net\nkeyword:bank.\ndomain:пример.рф\n", encoding="utf-8"
         )
         (inputs / "telegram-domains").write_text(
-            "payload:\n  - DOMAIN-SUFFIX,telegram.example\n  - DOMAIN-KEYWORD,nicegram\n",
+            "payload:\n  - DOMAIN-SUFFIX,telegram.example\n  - DOMAIN-SUFFIX,t.me\n"
+            "  - DOMAIN-KEYWORD,nicegram\n",
+            encoding="utf-8",
+        )
+        (inputs / "telegram-base-domains").write_text(
+            "payload:\n  - DOMAIN-SUFFIX,t.me\n  - DOMAIN-SUFFIX,telegram.org\n",
             encoding="utf-8",
         )
         (inputs / "telegram-ips").write_text("192.0.2.128/25\n2001:db8::/126\n", encoding="utf-8")
@@ -48,6 +53,12 @@ def build_fixture(output: Path) -> dict[str, int]:
             (
                 Source("ru-domains", "https://example.test/ru", "ru-domains"),
                 Source("telegram-domains", "https://example.test/tg", "telegram-domains", "yaml"),
+                Source(
+                    "telegram-base-domains",
+                    "https://example.test/tg-base",
+                    "telegram-domains",
+                    "yaml",
+                ),
                 Source("telegram-ips", "https://example.test/ips", "telegram-ips"),
                 Source("geofeed", "https://example.test/feed", "geofeed"),
             ),
