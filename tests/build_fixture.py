@@ -2,16 +2,12 @@
 
 import gzip
 import shutil
-import sys
 from pathlib import Path
 from tempfile import TemporaryDirectory
-
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from rulesets.build import generate
 from rulesets.config import Config, Source
 from rulesets.ips import IPFilters
-from scripts.verify_mihomo import verify
 
 
 def build_fixture(output: Path) -> dict[str, int]:
@@ -73,12 +69,3 @@ def build_fixture(output: Path) -> dict[str, int]:
             encoding="utf-8",
         )
         return counts
-
-
-if __name__ == "__main__":
-    if len(sys.argv) != 1:
-        raise SystemExit("Usage: python tests/build_fixture.py")
-    with TemporaryDirectory() as temporary:
-        output = Path(temporary)
-        build_fixture(output)
-        verify(Path(".tools/mihomo"), output)

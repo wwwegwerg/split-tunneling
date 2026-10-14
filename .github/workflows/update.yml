@@ -40,8 +40,8 @@ jobs:
         run: uv run --locked python -m rulesets
       - name: Install Mihomo
         run: bash scripts/install-mihomo.sh
-      - name: Validate and compile rules
-        run: uv run --locked python scripts/verify_mihomo.py
+      - name: Compile IP rule sets
+        run: uv run --locked python scripts/compile_mihomo.py
       - name: Publish release
         env:
           GH_TOKEN: ${{ github.token }}

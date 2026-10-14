@@ -92,7 +92,7 @@ def generate(
         written = {path.name for path in stage.iterdir()}
         for path in stage.iterdir():
             path.replace(output / path.name)
-        # Compiled MRS files belong to the old build until validation runs again.
+        # Compiled MRS files belong to the old build until conversion runs again.
         for name in set(build_file_names()) - written:
             (output / name).unlink(missing_ok=True)
     return counts

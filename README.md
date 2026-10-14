@@ -26,20 +26,42 @@ AS1273/AS44893 захватывают также адреса сторонних
 
 ### Mihomo
 
-Домены — `.mihomo.yaml` с `behavior: classical` и `format: yaml`;
-IP — `.mihomo.mrs` с `behavior: ipcidr` и `format: mrs`. Например:
-
 ```yaml
 rule-providers:
+  telegram-domains:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://github.com/wwwegwerg/split-tunneling/releases/latest/download/telegram-domains.mihomo.yaml
+  telegram-ips:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://github.com/wwwegwerg/split-tunneling/releases/latest/download/telegram-ips.mihomo.mrs
   ru-domains:
     type: http
     behavior: classical
     format: yaml
     interval: 86400
     url: https://github.com/wwwegwerg/split-tunneling/releases/latest/download/ru-domains.mihomo.yaml
+  ru-ips:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://github.com/wwwegwerg/split-tunneling/releases/latest/download/ru-ips.mihomo.mrs
+
 rules:
+  - RULE-SET,telegram-domains,PROXY
+  - RULE-SET,telegram-ips,PROXY
   - RULE-SET,ru-domains,DIRECT
+  - RULE-SET,ru-ips,DIRECT
+  - MATCH,PROXY
 ```
+
+Для `PROXY` нужна одноимённая группа или прокси в конфигурации.
 
 ### Shadowrocket
 
@@ -57,18 +79,19 @@ FINAL,PROXY
 
 ### AmneziaVPN
 
-Нужна версия 5.0.1.5 или новее. `ru-ips.amnezia.json` импортируется в список сайтов
-раздельного туннелирования для обхода VPN. `telegram-ips.amnezia.json` можно
-использовать отдельно в режиме «только адреса из списка через VPN».
-Изменения применяются после включения раздельного туннелирования и переподключения VPN.
+AmneziaVPN 5.0.1.5 и новее. JSON импортируется в список сайтов раздельного туннелирования.
 
-Это ручной импорт, не подписка. Экспорт содержит только IPv4; совпадения по имени
-домена (`full`/`domain`/`keyword`) не переносимы в Amnezia. Раздельное туннелирование IP недоступно
-в Amnezia Free. [Инструкция](https://docs.amnezia.org/documentation/instructions/vpn-split-tunneling/).
+| Файл | Режим |
+| --- | --- |
+| [ru-ips.amnezia.json](https://github.com/wwwegwerg/split-tunneling/releases/latest/download/ru-ips.amnezia.json) | Адреса списка без VPN, остальные через VPN |
+| [telegram-ips.amnezia.json](https://github.com/wwwegwerg/split-tunneling/releases/latest/download/telegram-ips.amnezia.json) | Только адреса списка через VPN |
 
-**Отдельный AmneziaWG:** JSON-импорт отсутствует; `AllowedIPs` перечисляет адреса
-через туннель. Для обхода RU нужен обратный список и настройка конкретного профиля.
-При использовании AWG внутри AmneziaVPN или Mihomo подходят экспорты этих приложений.
+Обновление — повторным импортом; изменения применяются после переподключения VPN.
+Списки содержат только IPv4. В Amnezia Free раздельное туннелирование IP недоступно.
+[Инструкция приложения](https://docs.amnezia.org/documentation/instructions/vpn-split-tunneling/).
+
+Списки подходят для протокола AmneziaWG внутри AmneziaVPN.
+Отдельное приложение AmneziaWG не поддерживает этот JSON-импорт.
 
 ## Нейтральные списки
 

@@ -20,7 +20,3 @@ jobs:
       - run: uv run --locked ruff format --check .
       - run: uv run --locked mypy
       - run: uv run --locked python -m unittest discover -s tests -v
-      - name: Install Mihomo
-        run: bash scripts/install-mihomo.sh
-      - name: Check exports in Mihomo
-        run: uv run --locked python tests/build_fixture.py

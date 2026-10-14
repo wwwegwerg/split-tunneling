@@ -17,7 +17,7 @@ def publication_files(output: Path) -> list[Path]:
     files = [output / name for name in asset_names()]
     for path in files:
         if not path.is_file() or not path.stat().st_size:
-            raise ValueError(f"Missing release file: {path.name}; run Mihomo validation first")
+            raise ValueError(f"Missing release file: {path.name}")
     return files
 
 
