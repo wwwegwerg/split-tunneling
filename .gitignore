@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+.mypy_cache/
+.ruff_cache/
+dist/
+.tools/
+.env
+.env.*
+!.env.example
+*.mmdb
+!tests/fixtures/*.mmdb
+*.csv.gz

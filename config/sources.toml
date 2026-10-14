@@ -1,0 +1,650 @@
+# Sources and IP selectors from Davoyan/mihomo-rule-sets (2026-10-13).
+[local]
+ru_domains = "ru-domains.txt"
+telegram_ips = "telegram-ips.txt"
+
+[ip_filters]
+countries = [
+  "BY",
+  "RU",
+]
+asns = [
+  "AS12332",
+  "AS12380",
+  "AS12389",
+  "AS12396",
+  "AS12543",
+  "AS12683",
+  "AS12685",
+  "AS12690",
+  "AS12695",
+  "AS12714",
+  "AS12730",
+  "AS12768",
+  "AS12772",
+  "AS12846",
+  "AS13055",
+  "AS13056",
+  "AS13075",
+  "AS13094",
+  "AS13095",
+  "AS13118",
+  "AS13155",
+  "AS13174",
+  "AS13238",
+  "AS13257",
+  "AS15468",
+  "AS15582",
+  "AS15640",
+  "AS15759",
+  "AS15934",
+  "AS16012",
+  "AS16043",
+  "AS16256",
+  "AS16300",
+  "AS16301",
+  "AS16345",
+  "AS196641",
+  "AS196747",
+  "AS197023",
+  "AS197068",
+  "AS197140",
+  "AS198295",
+  "AS199295",
+  "AS200350",
+  "AS201012",
+  "AS201512",
+  "AS201513",
+  "AS201706",
+  "AS201817",
+  "AS202611",
+  "AS202804",
+  "AS203502",
+  "AS204354",
+  "AS204952",
+  "AS205158",
+  "AS205161",
+  "AS20533",
+  "AS205830",
+  "AS20597",
+  "AS205971",
+  "AS20632",
+  "AS206661",
+  "AS206673",
+  "AS20702",
+  "AS207207",
+  "AS207304",
+  "AS207581",
+  "AS207970",
+  "AS207986",
+  "AS20807",
+  "AS208117",
+  "AS208165",
+  "AS208398",
+  "AS20866",
+  "AS208677",
+  "AS208722",
+  "AS208795",
+  "AS209024",
+  "AS20919",
+  "AS209701",
+  "AS210109",
+  "AS21017",
+  "AS21051",
+  "AS210656",
+  "AS211517",
+  "AS211631",
+  "AS212066",
+  "AS213105",
+  "AS21332",
+  "AS21353",
+  "AS21365",
+  "AS21378",
+  "AS213853",
+  "AS21447",
+  "AS21479",
+  "AS21480",
+  "AS21483",
+  "AS21487",
+  "AS215013",
+  "AS215070",
+  "AS24588",
+  "AS24699",
+  "AS24783",
+  "AS24789",
+  "AS24810",
+  "AS24866",
+  "AS24873",
+  "AS25159",
+  "AS25408",
+  "AS25436",
+  "AS25446",
+  "AS25490",
+  "AS25515",
+  "AS25531",
+  "AS2599",
+  "AS2766",
+  "AS28703",
+  "AS28709",
+  "AS28860",
+  "AS28884",
+  "AS29069",
+  "AS29125",
+  "AS29190",
+  "AS29194",
+  "AS29209",
+  "AS29456",
+  "AS29648",
+  "AS30749",
+  "AS30881",
+  "AS30922",
+  "AS31133",
+  "AS31163",
+  "AS31195",
+  "AS31205",
+  "AS31208",
+  "AS31213",
+  "AS31224",
+  "AS31261",
+  "AS31359",
+  "AS31363",
+  "AS31425",
+  "AS31483",
+  "AS31484",
+  "AS31496",
+  "AS31558",
+  "AS3216",
+  "AS3235",
+  "AS3253",
+  "AS33844",
+  "AS33934",
+  "AS34038",
+  "AS34137",
+  "AS34150",
+  "AS34168",
+  "AS34205",
+  "AS34267",
+  "AS34351",
+  "AS34533",
+  "AS34552",
+  "AS34584",
+  "AS34590",
+  "AS34644",
+  "AS34747",
+  "AS34892",
+  "AS34894",
+  "AS34925",
+  "AS34974",
+  "AS35125",
+  "AS35154",
+  "AS35177",
+  "AS35237",
+  "AS35298",
+  "AS35473",
+  "AS35516",
+  "AS35728",
+  "AS38951",
+  "AS39001",
+  "AS39028",
+  "AS39229",
+  "AS39407",
+  "AS39435",
+  "AS39799",
+  "AS39811",
+  "AS39858",
+  "AS40993",
+  "AS41002",
+  "AS41134",
+  "AS41190",
+  "AS41209",
+  "AS41403",
+  "AS41661",
+  "AS41682",
+  "AS41691",
+  "AS41727",
+  "AS41733",
+  "AS41754",
+  "AS41771",
+  "AS41786",
+  "AS41822",
+  "AS41843",
+  "AS41853",
+  "AS41929",
+  "AS42087",
+  "AS42091",
+  "AS42110",
+  "AS42115",
+  "AS42116",
+  "AS42245",
+  "AS42322",
+  "AS42358",
+  "AS42362",
+  "AS42548",
+  "AS42610",
+  "AS42628",
+  "AS42682",
+  "AS42683",
+  "AS42842",
+  "AS42974",
+  "AS43038",
+  "AS43097",
+  "AS43132",
+  "AS43148",
+  "AS43275",
+  "AS43314",
+  "AS43318",
+  "AS43396",
+  "AS43478",
+  "AS43574",
+  "AS43687",
+  "AS43720",
+  "AS43797",
+  "AS43970",
+  "AS44096",
+  "AS44408",
+  "AS44412",
+  "AS44467",
+  "AS44534",
+  "AS44677",
+  "AS44704",
+  "AS44731",
+  "AS44736",
+  "AS44895",
+  "AS44923",
+  "AS45000",
+  "AS47111",
+  "AS47395",
+  "AS47457",
+  "AS47541",
+  "AS47542",
+  "AS47764",
+  "AS47899",
+  "AS47911",
+  "AS48000",
+  "AS48044",
+  "AS48100",
+  "AS48123",
+  "AS48124",
+  "AS48176",
+  "AS48212",
+  "AS48322",
+  "AS48421",
+  "AS48541",
+  "AS48612",
+  "AS48796",
+  "AS48858",
+  "AS49048",
+  "AS49053",
+  "AS49144",
+  "AS49154",
+  "AS49281",
+  "AS49350",
+  "AS49665",
+  "AS49816",
+  "AS49874",
+  "AS49988",
+  "AS50071",
+  "AS50240",
+  "AS50498",
+  "AS50512",
+  "AS50542",
+  "AS50543",
+  "AS50544",
+  "AS50928",
+  "AS51011",
+  "AS51034",
+  "AS51035",
+  "AS51115",
+  "AS51570",
+  "AS51604",
+  "AS51645",
+  "AS51771",
+  "AS51819",
+  "AS52207",
+  "AS5563",
+  "AS5573",
+  "AS56330",
+  "AS56377",
+  "AS56420",
+  "AS56981",
+  "AS57026",
+  "AS57044",
+  "AS57073",
+  "AS57107",
+  "AS57378",
+  "AS57681",
+  "AS57973",
+  "AS58100",
+  "AS58112",
+  "AS59467",
+  "AS59494",
+  "AS59713",
+  "AS60122",
+  "AS60476",
+  "AS60490",
+  "AS60863",
+  "AS60891",
+  "AS61178",
+  "AS61280",
+  "AS62170",
+  "AS62222",
+  "AS62243",
+  "AS62287",
+  "AS62423",
+  "AS6828",
+  "AS6850",
+  "AS6854",
+  "AS6863",
+  "AS8263",
+  "AS8331",
+  "AS8345",
+  "AS8350",
+  "AS8359",
+  "AS8371",
+  "AS8382",
+  "AS8402",
+  "AS8443",
+  "AS8557",
+  "AS8568",
+  "AS8570",
+  "AS8580",
+  "AS8675",
+  "AS8732",
+  "AS8752",
+  "AS8755",
+  "AS8773",
+  "AS8828",
+  "AS9049",
+  "AS9068",
+]
+as_name_keywords = [
+  "ALEF-BANK",
+  "Alfa-Bank",
+  "CDNvideo",
+  "DDOS-GUARD",
+  "EdgeAm",
+  "EdgeCenter LLC",
+  "GRCHC",
+  "JSC IOT",
+  "LLC VK",
+  "Moscow city telephone network",
+  "Nauka-Svyaz",
+  "Rostelecom",
+  "Ruform LLC",
+  "Russian Agricultural Bank",
+  "SERVICEPIPE",
+  "Sberbank",
+  "Sovkombank",
+  "Sovremennye setevye tekhnologii",
+  "TILDA PLATFORM CLOUD SERVICES",
+  "VKontakte",
+  "Vimpelcom",
+  "kaspersky",
+  "ngenix",
+  "ru-center",
+  "yandex",
+]
+as_domain_keywords = [
+  "beeline",
+  "edgecenter",
+  "kaspersky",
+  "ngenix",
+  "rutube",
+  "servicepipe",
+  "stormwall",
+  "yandex",
+]
+as_domains = [
+  "1city.org",
+  "airee.ru",
+  "antiddos.solutions",
+  "ardinvest.net",
+  "avanta-telecom.ru",
+  "avito.ru",
+  "beeline.ru",
+  "bestline.su",
+  "cdnvideo.com",
+  "cdnvideo.ru",
+  "cft.ru",
+  "cloud.ru",
+  "corbina.net",
+  "crelcom.ru",
+  "crimea-com.net",
+  "crimea-com.ru",
+  "crimea.com",
+  "curator.pro",
+  "d-group.online",
+  "ddos-guard.net",
+  "donsattv.ru",
+  "drweb.com",
+  "drweb.ru",
+  "edgecenter.ru",
+  "ekma-is.ru",
+  "ekma.is",
+  "ertelecom.ru",
+  "evpanet.com",
+  "farline.net",
+  "gov.ru",
+  "kaspersky.com",
+  "komfort21vek.ru",
+  "koronapay.com",
+  "lds.online",
+  "liveproxy.ru",
+  "m3x.org",
+  "mageal.ru",
+  "mail.ru",
+  "majordomo.ru",
+  "maximusnet.ru",
+  "megafon.ru",
+  "meshnet.su",
+  "metro86.ru",
+  "mid.ru",
+  "miran.ru",
+  "miranda-media.ru",
+  "mobile-win.ru",
+  "mts.ru",
+  "my-trinity.com",
+  "mytrinet.ru",
+  "naukanet.ru",
+  "net.ru",
+  "nic.ru",
+  "nichost.ru",
+  "novotelecom.ru",
+  "ok.ru",
+  "onlinedn.ru",
+  "ozon.ru",
+  "profintel.ru",
+  "rambler.ru",
+  "realnet.ru",
+  "reconn.ru",
+  "redi.su",
+  "reg.ru",
+  "rfc-cfa.ru",
+  "rostelecom.ru",
+  "rshb.ru",
+  "rt.ru",
+  "rtcomm.ru",
+  "rusety.ru",
+  "sevstar.net",
+  "sevtelecom.ru",
+  "skymaxsib.ru",
+  "spd-mgts.ru",
+  "sputnik.ru",
+  "t2.ru",
+  "tbank.ru",
+  "tilda.by",
+  "tilda.cc",
+  "tilda.kz",
+  "tilda.ru",
+  "tildacdn.com",
+  "tinkoff.ru",
+  "tkmotel.ru",
+  "ubsnet.ru",
+  "ugletele.com",
+  "variti.io",
+  "vikscom.net",
+  "vk.com",
+  "vk.company",
+  "vk.ru",
+  "vkontakte.ru",
+  "volnamobile.ru",
+  "vtb-bank.by",
+  "vtb.am",
+  "vtb.com",
+  "vtb.ge",
+  "vtb.ru",
+  "xn--80ahgneri.net",
+  "ya.ru",
+  "yaltanet.ru",
+  "yandex.net",
+]
+
+[[sources]]
+name = "hydraponique-category-ru"
+group = "ru-domains"
+format = "geosite"
+url = "https://raw.githubusercontent.com/hydraponique/roscomvpn-geosite/master/data/category-ru"
+
+[[sources]]
+name = "hydraponique-whitelist"
+group = "ru-domains"
+format = "geosite"
+url = "https://raw.githubusercontent.com/hydraponique/roscomvpn-geosite/master/data/whitelist"
+
+[[sources]]
+name = "itdoginfo-outside"
+group = "ru-domains"
+format = "geosite"
+url = "https://raw.githubusercontent.com/itdoginfo/allow-domains/main/Russia/outside-raw.lst"
+
+[[sources]]
+name = "metacubex-category-ru"
+group = "ru-domains"
+format = "mihomo"
+url = "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ru.list"
+
+[[sources]]
+name = "metacubex-drweb"
+group = "ru-domains"
+format = "mihomo"
+url = "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/drweb.list"
+
+[[sources]]
+name = "metacubex-mailru"
+group = "ru-domains"
+format = "mihomo"
+url = "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/mailru.list"
+
+[[sources]]
+name = "metacubex-mailru-group"
+group = "ru-domains"
+format = "mihomo"
+url = "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/mailru-group.list"
+
+[[sources]]
+name = "metacubex-avito"
+group = "ru-domains"
+format = "mihomo"
+url = "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/avito.list"
+
+[[sources]]
+name = "metacubex-yandex"
+group = "ru-domains"
+format = "mihomo"
+url = "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/yandex.list"
+
+[[sources]]
+name = "metacubex-kinopoisk"
+group = "ru-domains"
+format = "mihomo"
+url = "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/kinopoisk.list"
+
+[[sources]]
+name = "metacubex-kaspersky"
+group = "ru-domains"
+format = "mihomo"
+url = "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/kaspersky.list"
+
+[[sources]]
+name = "metacubex-wildberries"
+group = "ru-domains"
+format = "mihomo"
+url = "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/wildberries.list"
+
+[[sources]]
+name = "metacubex-ozon"
+group = "ru-domains"
+format = "mihomo"
+url = "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ozon.list"
+
+[[sources]]
+name = "metacubex-category-bank-ru"
+group = "ru-domains"
+format = "mihomo"
+url = "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-bank-ru.list"
+
+[[sources]]
+name = "metacubex-category-entertainment-ru"
+group = "ru-domains"
+format = "mihomo"
+url = "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-entertainment-ru.list"
+
+[[sources]]
+name = "metacubex-category-travel-ru"
+group = "ru-domains"
+format = "mihomo"
+url = "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-travel-ru.list"
+
+[[sources]]
+name = "metacubex-category-ecommerce-ru"
+group = "ru-domains"
+format = "mihomo"
+url = "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ecommerce-ru.list"
+
+[[sources]]
+name = "metacubex-category-retail-ru"
+group = "ru-domains"
+format = "mihomo"
+url = "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-retail-ru.list"
+
+[[sources]]
+name = "davoyan-legacy"
+group = "ru-domains"
+format = "geosite"
+url = "https://raw.githubusercontent.com/Davoyan/mihomo-rule-sets/main/domains/category-ru-legacy.txt"
+
+[[sources]]
+name = "davoyan-telegram-domains"
+group = "telegram-domains"
+format = "yaml"
+url = "https://raw.githubusercontent.com/Davoyan/mihomo-rule-sets/main/domains/additional-telegram-domains.yaml"
+
+[[sources]]
+name = "telegram-official"
+group = "telegram-ips"
+url = "https://core.telegram.org/resources/cidr.txt"
+
+[[sources]]
+name = "telegram-as1273"
+group = "telegram-ips"
+url = "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/asn/AS1273.list"
+
+[[sources]]
+name = "telegram-as44893"
+group = "telegram-ips"
+url = "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/asn/AS44893.list"
+
+[[sources]]
+name = "geofeed-timeweb"
+group = "geofeed"
+url = "https://geofeed.timeweb.net/geofeed.csv"
+
+[[sources]]
+name = "geofeed-selectel"
+group = "geofeed"
+url = "https://geofeed.selectel.ru/subnets.csv"
+
+[[sources]]
+name = "geofeed-ipxo"
+group = "geofeed"
+url = "https://geofeed.ipxo.com/geofeed.txt"
