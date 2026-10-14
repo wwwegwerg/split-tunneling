@@ -26,7 +26,11 @@ AS1273/AS44893 захватывают также адреса сторонних
 
 ### Mihomo
 
+Фрагмент для добавления в существующую конфигурацию:
+
 ```yaml
+mode: rule
+
 rule-providers:
   telegram-domains:
     type: http
