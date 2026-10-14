@@ -15,7 +15,6 @@ from rulesets.ips import (
     read_geofeed,
     read_ipinfo,
     read_maxmind,
-    subtract_networks,
 )
 
 
@@ -54,11 +53,9 @@ def generate(
     ru.extend(ipinfo)
     ru.extend(maxmind)
     reduced = {name: reduce_domains(rules) for name, rules in domains.items()}
-    telegram_networks = collapse_networks(telegram)
     networks_by_name = {
-        # Shadowrocket may prefer a narrower RU prefix despite Telegram's rule order.
-        "ru-ips": subtract_networks(ru, telegram_networks),
-        "telegram-ips": telegram_networks,
+        "ru-ips": collapse_networks(ru),
+        "telegram-ips": collapse_networks(telegram),
     }
     if any(not rules for rules in reduced.values()) or any(
         not networks for networks in networks_by_name.values()

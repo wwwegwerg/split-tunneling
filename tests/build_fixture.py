@@ -27,10 +27,7 @@ def build_fixture(output: Path) -> dict[str, int]:
             encoding="utf-8",
         )
         (inputs / "telegram-ips").write_text("192.0.2.128/25\n2001:db8::/126\n", encoding="utf-8")
-        (inputs / "geofeed").write_text(
-            "198.51.100.0/24,RU,,,\n192.0.2.0/23,RU,,,\n2001:db8::/125,RU,,,\n",
-            encoding="utf-8",
-        )
+        (inputs / "geofeed").write_text("198.51.100.0/24,RU,,,\n", encoding="utf-8")
         with gzip.open(inputs / "ipinfo.csv.gz", "wt", encoding="utf-8") as stream:
             stream.write(
                 "network,country_code,asn,as_name,as_domain\n"

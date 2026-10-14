@@ -13,42 +13,10 @@ from rulesets.ips import (
     read_geofeed,
     read_ipinfo,
     read_maxmind,
-    subtract_networks,
 )
 
 
 class IPTests(unittest.TestCase):
-    def test_subtraction_preserves_every_address_outside_exclusions(self) -> None:
-        cases = [
-            ("192.0.2.0/28", "192.0.2.2/31\n192.0.2.8/30\n192.0.2.15/32"),
-            ("2001:db8::/124", "2001:db8::2/127\n2001:db8::8/126\n2001:db8::f/128"),
-            ("192.0.2.0/30\n2001:db8::/126", "192.0.2.0/24\n2001:db8::/64"),
-            ("192.0.2.0/30\n2001:db8::/126", "192.0.2.0/30\n2001:db8::/126"),
-            ("192.0.2.0/30\n2001:db8::/126", "198.51.100.0/30\n2001:db8:1::/126"),
-            ("192.0.2.0/30\n192.0.2.8/30", "192.0.2.0/28"),
-            ("192.0.2.0/30\n2001:db8::/126", ""),
-            ("", "192.0.2.0/30"),
-        ]
-        for included, excluded in cases:
-            with self.subTest(included=included, excluded=excluded):
-                original = parse_cidrs(included) if included else []
-                blocked = parse_cidrs(excluded) if excluded else []
-                result = subtract_networks(original, blocked)
-                expected = {
-                    ip
-                    for net in original
-                    for ip in net
-                    if not any(ip in exclusion for exclusion in blocked)
-                }
-                self.assertEqual({ip for net in result for ip in net}, expected)
-                self.assertEqual(result, collapse_networks(result))
-
-    def test_narrower_ru_prefix_does_not_override_telegram(self) -> None:
-        result = subtract_networks(
-            parse_cidrs("91.108.0.0/22\n91.109.0.0/24"), parse_cidrs("91.108.0.0/16")
-        )
-        self.assertEqual([str(net) for net in result], ["91.109.0.0/24"])
-
     def test_aggregation_cannot_create_a_default_route(self) -> None:
         for entries in ("0.0.0.0/1\n128.0.0.0/1", "::/1\n8000::/1"):
             with self.subTest(entries=entries), self.assertRaisesRegex(ValueError, "default route"):
