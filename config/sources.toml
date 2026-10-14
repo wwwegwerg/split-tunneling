@@ -83,7 +83,6 @@ asns = [
   "AS208398",
   "AS20866",
   "AS208677",
-  "AS208722",
   "AS208795",
   "AS209024",
   "AS20919",
@@ -385,7 +384,6 @@ as_name_keywords = [
   "yandex",
 ]
 as_domain_keywords = [
-  "beeline",
   "edgecenter",
   "kaspersky",
   "ngenix",
@@ -516,6 +514,12 @@ name = "itdoginfo-outside"
 group = "ru-domains"
 format = "geosite"
 url = "https://raw.githubusercontent.com/itdoginfo/allow-domains/main/Russia/outside-raw.lst"
+
+[[sources]]
+name = "itdoginfo-inside"
+group = "blocked-domains"
+format = "geosite"
+url = "https://raw.githubusercontent.com/itdoginfo/allow-domains/main/Russia/inside-raw.lst"
 
 [[sources]]
 name = "metacubex-category-ru"

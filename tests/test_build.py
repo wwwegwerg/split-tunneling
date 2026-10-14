@@ -30,8 +30,7 @@ class PipelineTests(unittest.TestCase):
     def test_fixture_exercises_full_pipeline_and_preserves_client_semantics(self) -> None:
         with TemporaryDirectory() as temporary:
             output = Path(temporary)
-            counts = build_fixture(output)
-            self.assertGreater(counts["ru-ips"], 0)
+            build_fixture(output)
             self.assertEqual(
                 (output / "ru-domains.shadowrocket.list").read_text().splitlines(),
                 [
@@ -51,7 +50,11 @@ class PipelineTests(unittest.TestCase):
                     "domain:t.me",
                     "domain:telegram.example",
                     "domain:telegram.org",
-                    "keyword:nicegram",
+                    "keyword:sber.",
                 ],
             )
             self.assertIn("203.0.113.0/24", (output / "ru-ips.txt").read_text().splitlines())
+            self.assertEqual(
+                (output / "blocked-domains.shadowrocket.list").read_text().splitlines(),
+                ["DOMAIN-SUFFIX,blocked.example.org", "DOMAIN-SUFFIX,ua"],
+            )

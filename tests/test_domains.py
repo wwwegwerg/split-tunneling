@@ -18,10 +18,6 @@ class DomainTests(unittest.TestCase):
             },
         )
 
-    def test_yaml_keywords_survive_export_without_wildcard_conversion(self) -> None:
-        rules = parse_domains('payload:\n  - "DOMAIN-KEYWORD,sber."\n', "yaml")
-        self.assertEqual(next(iter(rules)).classical(), "DOMAIN-KEYWORD,sber.")
-
     def test_only_suffix_rules_cover_child_domains(self) -> None:
         rules = parse_domains(
             "full:example.com\nfull:a.example.com\ndomain:example.org\n"

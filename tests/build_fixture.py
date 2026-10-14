@@ -10,7 +10,7 @@ from rulesets.config import Config, Source
 from rulesets.ips import IPFilters
 
 
-def build_fixture(output: Path) -> dict[str, int]:
+def build_fixture(output: Path) -> None:
     with TemporaryDirectory() as temporary:
         inputs = Path(temporary)
         (inputs / "local-domains").write_text("domain:example.org\n", encoding="utf-8")
@@ -18,9 +18,10 @@ def build_fixture(output: Path) -> dict[str, int]:
         (inputs / "ru-domains").write_text(
             "full:api.example.net\nkeyword:bank.\ndomain:пример.рф\n", encoding="utf-8"
         )
+        (inputs / "blocked-domains").write_text(".ua\nblocked.example.org\n", encoding="utf-8")
         (inputs / "telegram-domains").write_text(
             "payload:\n  - DOMAIN-SUFFIX,telegram.example\n  - DOMAIN-SUFFIX,t.me\n"
-            "  - DOMAIN-KEYWORD,nicegram\n",
+            '  - "DOMAIN-KEYWORD,sber."\n',
             encoding="utf-8",
         )
         (inputs / "telegram-base-domains").write_text(
@@ -48,6 +49,7 @@ def build_fixture(output: Path) -> dict[str, int]:
         config = Config(
             (
                 Source("ru-domains", "https://example.test/ru", "ru-domains"),
+                Source("blocked-domains", "https://example.test/blocked", "blocked-domains"),
                 Source("telegram-domains", "https://example.test/tg", "telegram-domains", "yaml"),
                 Source(
                     "telegram-base-domains",
@@ -62,10 +64,9 @@ def build_fixture(output: Path) -> dict[str, int]:
             inputs / "local-domains",
             inputs / "local-telegram",
         )
-        counts = generate(config, inputs, output)
+        generate(config, inputs, output)
         report = output / "build-info.txt"
         report.write_text(
             report.read_text(encoding="utf-8").replace("\nMode: full\n", "\nMode: fixture\n"),
             encoding="utf-8",
         )
-        return counts

@@ -37,7 +37,13 @@ def load_config() -> Config:
             raise ValueError("Source names must be unique filename-safe identifiers")
         if urlsplit(source.url).scheme != "https":
             raise ValueError(f"{source.name}: expected an HTTPS source URL")
-        if source.group not in {"ru-domains", "telegram-domains", "telegram-ips", "geofeed"}:
+        if source.group not in {
+            "ru-domains",
+            "telegram-domains",
+            "blocked-domains",
+            "telegram-ips",
+            "geofeed",
+        }:
             raise ValueError(f"{source.name}: unknown source group")
         if source.format not in {"geosite", "mihomo", "yaml"}:
             raise ValueError(f"{source.name}: unknown domain format")

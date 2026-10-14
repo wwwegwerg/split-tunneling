@@ -5,6 +5,7 @@ from tempfile import TemporaryDirectory
 from rulesets.build import generate
 from rulesets.config import load_config
 from rulesets.download import fetch_inputs
+from rulesets.exports import DOMAIN_SETS, IP_SETS
 
 
 def main() -> int:
@@ -16,7 +17,7 @@ def main() -> int:
             inputs = Path(temporary)
             hashes = fetch_inputs(config, inputs)
             counts = generate(config, inputs, Path("dist"), hashes=hashes)
-        for name in ("ru-domains", "ru-ips", "telegram-domains", "telegram-ips"):
+        for name in (*DOMAIN_SETS, *IP_SETS):
             print(f"{name}: {counts[name]}")
     except (ValueError, OSError, RuntimeError) as error:
         print(f"Build failed: {error}", file=sys.stderr)

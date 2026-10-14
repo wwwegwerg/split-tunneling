@@ -11,6 +11,7 @@
 | ru-ips | Подсети RU/BY и выбранных организаций |
 | telegram-domains | Домены Telegram и дополнения Davoyan |
 | telegram-ips | Подсети Telegram и сети AS1273/AS44893 |
+| blocked-domains | Заблокированные ресурсы и сервисы с ограничениями для российских IP из itdog Russia inside |
 
 ## Приложения
 
@@ -20,7 +21,8 @@
 https://github.com/wwwegwerg/split-tunneling/releases/latest/download/ИМЯ-ФАЙЛА
 ```
 
-В Mihomo и Shadowrocket правила Telegram используют VPN-политику и располагаются раньше RU.
+В Mihomo и Shadowrocket правила blocked-domains и Telegram используют VPN-политику
+и располагаются раньше RU.
 Адреса Telegram исключены из RU, чтобы не попадать под прямое подключение.
 AS1273/AS44893 захватывают также адреса сторонних сервисов.
 
@@ -32,6 +34,12 @@ AS1273/AS44893 захватывают также адреса сторонних
 mode: rule
 
 rule-providers:
+  blocked-domains:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://github.com/wwwegwerg/split-tunneling/releases/latest/download/blocked-domains.mihomo.yaml
   telegram-domains:
     type: http
     behavior: classical
@@ -58,6 +66,7 @@ rule-providers:
     url: https://github.com/wwwegwerg/split-tunneling/releases/latest/download/ru-ips.mihomo.mrs
 
 rules:
+  - RULE-SET,blocked-domains,PROXY
   - RULE-SET,telegram-domains,PROXY
   - RULE-SET,telegram-ips,PROXY
   - RULE-SET,ru-domains,DIRECT
@@ -71,6 +80,7 @@ rules:
 
 ```ini
 [Rule]
+RULE-SET,https://github.com/wwwegwerg/split-tunneling/releases/latest/download/blocked-domains.shadowrocket.list,PROXY
 RULE-SET,https://github.com/wwwegwerg/split-tunneling/releases/latest/download/telegram-domains.shadowrocket.list,PROXY
 RULE-SET,https://github.com/wwwegwerg/split-tunneling/releases/latest/download/telegram-ips.shadowrocket.list,PROXY
 RULE-SET,https://github.com/wwwegwerg/split-tunneling/releases/latest/download/ru-domains.shadowrocket.list,DIRECT
@@ -91,7 +101,8 @@ AmneziaVPN 5.0.1.5 и новее. JSON импортируется в списо�
 | [telegram-ips.amnezia.json](https://github.com/wwwegwerg/split-tunneling/releases/latest/download/telegram-ips.amnezia.json) | Только адреса списка через VPN |
 
 Обновление — повторным импортом; изменения применяются после переподключения VPN.
-Списки содержат только IPv4. В Amnezia Free раздельное туннелирование IP недоступно.
+Списки содержат только IPv4; исключения blocked-domains в этот импорт не входят.
+В Amnezia Free раздельное туннелирование IP недоступно.
 [Инструкция приложения](https://docs.amnezia.org/documentation/instructions/vpn-split-tunneling/).
 
 Списки подходят для протокола AmneziaWG внутри AmneziaVPN.

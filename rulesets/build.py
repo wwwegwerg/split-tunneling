@@ -30,6 +30,7 @@ def generate(
     domains: dict[str, set[DomainRule]] = {
         "ru-domains": parse_domains(config.local_domains.read_text(encoding="utf-8"), "geosite"),
         "telegram-domains": set(),
+        "blocked-domains": set(),
     }
     telegram = parse_cidrs(config.local_telegram_ips.read_text(encoding="utf-8"))
     ru: list[Network] = []

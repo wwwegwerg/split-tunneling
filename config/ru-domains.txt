@@ -1,10 +1,11 @@
-# Manual additions from Davoyan/mihomo-rule-sets scripts/category-ru.py.
+# Local additions to upstream RU domain lists.
 domain:2ip.ru
 domain:5post.market
 domain:boosty.to
 domain:chizhik.club
 domain:donationalerts.com
 domain:emias.info
+domain:habrastorage.org
 domain:memealerts.com
 domain:mradx.net
 domain:mvk.com

@@ -4,7 +4,7 @@ from pathlib import Path
 from rulesets.domains import DomainRule
 from rulesets.ips import Network
 
-DOMAIN_SETS = ("ru-domains", "telegram-domains")
+DOMAIN_SETS = ("ru-domains", "telegram-domains", "blocked-domains")
 IP_SETS = ("ru-ips", "telegram-ips")
 
 

@@ -20,6 +20,9 @@ This product includes GeoLite Data created by [MaxMind](https://www.maxmind.com)
 удалённые hydraponique после проверки покрытия своим IP-списком; позже Davoyan
 добавлял туда ручные правила.
 
+blocked-domains — [itdog Russia inside](https://github.com/itdoginfo/allow-domains#russia-inside):
+заблокированные ресурсы и сервисы, ограничивающие доступ с российских IP.
+
 Геосайты MetaCubeX происходят из v2fly/domain-list-community; ASN-списки — из GeoLite2-ASN.
 MIT-notice hydraponique и v2fly сохранён в `third-party-notices.txt`.
 В используемых репозиториях itdoginfo и Davoyan, ветке данных MetaCubeX и файлах геофидов

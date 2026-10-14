@@ -88,6 +88,9 @@ def parse_domains(text: str, format: DomainFormat) -> set[DomainRule]:
             elif line.startswith(".") and format == "mihomo":
                 # Mihomo's leading dot matches subdomains only. It cannot be silently widened.
                 raise ValueError("Subdomain-only rules are not supported by the neutral format")
+            elif line.startswith(".") and format == "geosite":
+                # itdog's raw list uses ".ua" for a domain suffix.
+                rule = make_rule("domain", line[1:])
             else:
                 rule = make_rule("full" if format == "mihomo" else "domain", line)
         except ValueError as error:
