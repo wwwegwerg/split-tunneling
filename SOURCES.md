@@ -20,6 +20,9 @@ This product includes GeoLite Data created by [MaxMind](https://www.maxmind.com)
 удалённые hydraponique после проверки покрытия своим IP-списком; позже Davoyan
 добавлял туда ручные правила.
 
+Часть локальных дополнений в `config/ru-domains.txt` отобрана из
+[hydraponique/whitelist](https://github.com/hydraponique/roscomvpn-geosite/blob/master/data/whitelist) с проверкой принадлежности сервисам.
+
 blocked-domains — [itdog Russia inside](https://github.com/itdoginfo/allow-domains#russia-inside):
 заблокированные ресурсы и сервисы, ограничивающие доступ с российских IP.
 

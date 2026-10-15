@@ -76,6 +76,16 @@ rules:
 
 Для `PROXY` нужна одноимённая группа или прокси в конфигурации.
 
+При раздельном DNS политики blocked-domains и Telegram должны стоять перед RU.
+В примере DNS для RU — роутер `192.168.1.1`:
+
+```yaml
+dns:
+  nameserver-policy:
+    "rule-set:blocked-domains,telegram-domains": "https://1.1.1.1/dns-query#PROXY"
+    "rule-set:ru-domains": "192.168.1.1"
+```
+
 ### Shadowrocket
 
 ```ini

@@ -504,12 +504,6 @@ format = "geosite"
 url = "https://raw.githubusercontent.com/hydraponique/roscomvpn-geosite/master/data/category-ru"
 
 [[sources]]
-name = "hydraponique-whitelist"
-group = "ru-domains"
-format = "geosite"
-url = "https://raw.githubusercontent.com/hydraponique/roscomvpn-geosite/master/data/whitelist"
-
-[[sources]]
 name = "itdoginfo-outside"
 group = "ru-domains"
 format = "geosite"
